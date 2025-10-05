@@ -1,0 +1,32 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Allow read/write access for authenticated users
+    match /{document=**} {
+      allow read, write: if request.auth != null;
+    }
+    
+    // Geospatial data collection with specific rules
+    match /locations/{locationId} {
+      allow read: if true; // Public read for demo purposes
+      allow write: if request.auth != null
+        && request.resource.data.keys().hasAll(['latitude', 'longitude', 'timestamp'])
+        && request.resource.data.latitude is number
+        && request.resource.data.longitude is number
+        && request.resource.data.latitude >= -90 && request.resource.data.latitude <= 90
+        && request.resource.data.longitude >= -180 && request.resource.data.longitude <= 180;
+    }
+    
+    // MongoDB sync collection
+    match /mongodb_sync/{docId} {
+      allow read: if request.auth != null;
+      allow write: if request.auth != null && request.auth.token.admin == true;
+    }
+    
+    // BigQuery export metadata
+    match /bigquery_exports/{exportId} {
+      allow read: if request.auth != null;
+      allow write: if request.auth != null && request.auth.token.admin == true;
+    }
+  }
+}
