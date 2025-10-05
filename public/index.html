@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Watch Two - Firebase App</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🔥 Watch Two - Firebase Demo App</h1>
+      <p>Firebase Hosted App with Firestore, MongoDB, BigQuery & Geospatial</p>
+    </header>
+
+    <div class="content">
+      <section class="card">
+        <h2>🗄️ Firestore</h2>
+        <p>Real-time NoSQL database for web and mobile apps</p>
+        <button id="testFirestore">Test Firestore Connection</button>
+        <div id="firestoreStatus" class="status"></div>
+      </section>
+
+      <section class="card">
+        <h2>🌍 Geospatial Queries</h2>
+        <p>Location-based queries using GeoFire</p>
+        <div class="input-group">
+          <input type="number" id="latitude" placeholder="Latitude" step="0.000001">
+          <input type="number" id="longitude" placeholder="Longitude" step="0.000001">
+          <button id="addLocation">Add Location</button>
+        </div>
+        <button id="queryLocations">Query Nearby Locations</button>
+        <div id="geospatialStatus" class="status"></div>
+      </section>
+
+      <section class="card">
+        <h2>🔄 MongoDB Integration</h2>
+        <p>MongoDB sync status and operations</p>
+        <button id="checkMongoSync">Check Sync Status</button>
+        <div id="mongoStatus" class="status"></div>
+      </section>
+
+      <section class="card">
+        <h2>📊 BigQuery Integration</h2>
+        <p>Data warehouse for analytics</p>
+        <button id="checkBigQuery">Check Export Status</button>
+        <div id="bigqueryStatus" class="status"></div>
+      </section>
+
+      <section class="card">
+        <h2>📱 Mobile Development</h2>
+        <p>Ready for integration with:</p>
+        <ul>
+          <li>Android (Java/Kotlin)</li>
+          <li>Flutter (Dart)</li>
+          <li>iOS</li>
+        </ul>
+        <p>See documentation for platform-specific setup.</p>
+      </section>
+    </div>
+
+    <footer>
+      <p>Firebase Configuration Required: Add your Firebase config to <code>app.js</code></p>
+    </footer>
+  </div>
+
+  <!-- Firebase SDKs -->
+  <script type="module" src="app.js"></script>
+</body>
+</html>
